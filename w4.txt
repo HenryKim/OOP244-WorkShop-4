@@ -1,0 +1,114 @@
+Script started on Fri 21 Jun 2013 08:57:15 AM EDT
+hkim142@matrix:~/oop244/w4> exitrtclear bufferat w4x.h w4x.cpp Molecule.h whoami[K
+hkim142
+hkim142@matrix:~/oop244/w4> whoamiexit[Krtclear bufferat w4x.h w4x.cpp Molecule.h Molecule.cpp
+ // Workshop 4 - Molecules
+ // w4x.h
+//Hyungi Kim 025 741 125 OOP244 WorkShop 4//
+
+ const int MAX_MOLECULES = 10;// Workshop 4 - Molecules
+ // w4x.cpp
+//Hyungi Kim 025 741 125 OOP244 WorkShop 4//
+
+ #include <iostream>
+ using namespace std;
+ #include "w4x.h"
+ #include "Molecule.h"
+
+ int main() {
+     int n = MAX_MOLECULES;
+     Molecule molecule[MAX_MOLECULES];
+
+     cout << "Molecular Information\n";
+     cout << "=====================" << endl;
+
+     for (int i = 0; i < MAX_MOLECULES; i++) {
+         if (!molecule[i].read()) {
+             n = i;
+             i = MAX_MOLECULES;
+         }
+         cout << endl;
+     }
+
+     cout << "Structure            Name                     Mass\n";
+     cout << "==================================================" << endl; 
+
+     for (int i = 0; i < n; i++)
+         molecule[i].display();
+ }//Hyungi Kim 025 741 125 OOP244 WorkShop 4//
+#define MAX_CHAR 40
+class Molecule{
+	char cname [MAX_CHAR];
+	char name [MAX_CHAR];
+	double weight;
+public:
+	Molecule();
+	bool read();
+	void display() const;
+};//Hyungi Kim 025 741 125 OOP244 WorkShop 4// 
+#include <iostream>
+#include <stdio.h>
+#include <cstring>
+ using namespace std;
+#include "w4x.h"
+#include "Molecule.h"
+
+	Molecule::Molecule(){
+		cname[0]='\0';
+		name[0]='\0';
+		weight=0.0;
+ }
+	bool Molecule::read(){
+		int rc=1;
+		int temp;
+		cout<<"Enter structure :";
+		cin>>cname;
+		if (!strcmp(cname, "0")) {
+		rc = false;
+		}
+		
+		else{
+		cin.ignore(1000,'\n');
+		cout<<"Enter full name :";
+		cin.getline(name, MAX_CHAR);
+		cout<<"Enter weight    :";
+		cin>>weight;
+		return rc;}
+	}
+	void Molecule::display() const{
+		cout.setf(ios::left);
+		cout.width(21);
+		cout << cname;
+		cout.width(23);
+		cout << name;
+		cout.setf(ios::fixed);
+		cout.precision(3);
+		cout << weight << endl;
+	}
+hkim142@matrix:~/oop244/w4> g[Kcat w4x.h w4x.cpp Molecule.h Molecule.cpp[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwhoami[Kexit[Krtclear bufferat w4x.h w4x.cpp Molecule.h whoami[Kexit[Ka.outg++ Molecule.cpp w4x.cpp
+hkim142@matrix:~/oop244/w4> a.out
+Molecular Information
+=====================
+Enter structure :H2O
+Enter full name :water
+Enter weight    :18.015
+
+Enter structure :CO2
+Enter full name :Carbon Dioxide
+Enter weight    :44.010
+
+Enter structure :NaCL^H   l
+Enter full name :Sodu ium Chloride   e
+Enter weight    :58.443
+
+Enter structure :0
+
+Structure            Name                     Mass
+==================================================
+H2O                  water                  18.015
+CO2                  Carbon Dioxide         44.010
+NaCl                 Sodium Chloride        58.443
+hkim142@matrix:~/oop244/w4> exit
+exit
+
+Script done on Fri 21 Jun 2013 08:58:25 AM EDT
